@@ -1,0 +1,12 @@
+.form{
+    width: 100%;
+}
+
+.form--md{
+    max-width: 450px;
+}
+
+.form--space{
+    margin-top: 24px;
+    margin-bottom: 24px;
+}

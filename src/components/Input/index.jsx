@@ -1,19 +1,19 @@
 import { useId, useState } from "react";
 import './Input.css';
 
-export default function Input({value, setValue, type, placeholder}){
+export default function Input({value, setValue, type, placeholder, message, error}){
     const inputId = useId();
     const [filled, setFilled] = useState(false);
     
     const onBlur = (event) => {
         if(value.trim().length > 0 && !filled)
             setFilled(true);
-        else
+        else if(!value.trim(0).length)
             setFilled(false);
     }
 
     return(
-        <label className={`input ${filled ? 'input--filled' : ''}`} htmlFor={inputId} >
+        <label className={`input ${filled ? 'input--filled' : ''} ${error && 'input--error'}`} htmlFor={inputId} >
             <input 
                 id={inputId} 
                 value={value || ''} 
@@ -21,6 +21,7 @@ export default function Input({value, setValue, type, placeholder}){
                 onChange={(event)=>setValue(event.target.value)} 
                 onBlur={onBlur} />
             <span className="input__placeholder">{placeholder || 'value'}</span>
+            <span className="input__message">{message || ''}</span>
         </label>
     )
 }

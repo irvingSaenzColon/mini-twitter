@@ -1,0 +1,83 @@
+.step-form{
+    display: none;
+    width: 100%;
+    padding: 8px 16px;
+    opacity: 0;
+}
+
+.step-form--active{
+    display: block;
+}
+
+.step-form--show{
+    animation-name: show;
+    animation-duration: 0.5s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+}
+
+.step-form--show-reverse{
+    animation-name: show-reverse;
+    animation-duration: 0.5s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+}
+
+.step-form--hide{
+    animation-name: hide;
+    animation-duration: 0.5s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+}
+
+.step-form--hide-reverse{
+    animation-name: hide-reverse;
+    animation-duration: 0.5s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+}
+
+
+@keyframes show {
+    0%{
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    100%{
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes show-reverse {
+    0%{
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    100%{
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes hide {
+    0%{
+        transform: translateX(0);
+        opacity: 1;
+    }
+    100%{
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+@keyframes hide-reverse{
+    0%{
+        transform: translateX(0);
+        opacity: 1;
+    }
+    100%{
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+}

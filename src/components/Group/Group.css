@@ -1,0 +1,11 @@
+.group{
+    display: flex;
+}
+
+.group--space-between{
+    justify-content: space-between;
+}
+
+.group--gap-bg{
+    gap: 15px;
+}

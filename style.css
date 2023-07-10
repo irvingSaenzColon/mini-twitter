@@ -1,12 +1,18 @@
 :root {
-  --ceruleean:    #086788;
-  --blue-green:   #07A0C3;
-  --black:        #07020d;
-  --night:        #0C0812;
-  --onyx:         #616863;
-  --nyanza:       #E2FADB;
-  --raisin-black: #1D1B23;
+  --ceruleean:      #086788;
+  --pristine-seas:  #0f7496;
+  --blue-green:     #07A0C3;
+  --gummy-dolphins: #10aed1;
+  --black:          #07020d;
+  --night:          #0f0916;
+  --onyx:           #636a7a;
+  --dark-prince:    #677186;
+  --stormy-oceans:  #302942;
+  --nyanza:         #E2FADB;
+  --raisin-black:   #2b253a;
+
   --border-sm: 3px;
+  --max-size-page: 1000px;
 }
 
 *{
@@ -20,13 +26,51 @@ html{
   font-family: 'Quicksand', sans-serif;
 }
 
-
 body{
   background-color: var(--night);
 }
 
 input,
+button,
 textarea,
 select{
   font-family: 'Quicksand', sans-serif;
+  font-size: 1.5rem;
+}
+
+button{
+  cursor: pointer;
+}
+
+.title{
+  margin-bottom: 24px;
+  font-size: 3rem;
+  color: var(--blue-green);
+}
+
+.subtitle{
+  font-size: 2.4rem;
+  color: var(--ceruleean);
+}
+
+.label{
+  font-size: 1.5rem;
+  color: var(--onyx);
+  margin-bottom: 8px;
+}
+
+.info{
+  font-size: 1.5rem;
+  color: var(--onyx);
+}
+
+.info > a{
+  text-decoration: none;
+  color: var(--blue-green);
+
+  transition: color 0.25s ease;
+}
+
+.info > a:hover{
+  color: var(--ceruleean);
 }
