@@ -1,8 +1,10 @@
+import Header from "../components/Header";
+
 export default function Home(){
   
     return(
-       <main>
-        <h1 className="title">Inicio</h1>
+       <main className="page-content">
+        <Header title={'Home'} />
        </main>
     );
 }

@@ -12,7 +12,7 @@
   --doctor:         #f8f8f8;
   --sheikh-white:   #e2e2e2;
   --carbon:         #343434;
-  --raisin-black:   #2b253a;
+  --raisin-black:   #949494;
 
   --border-sm: 3px;
   --border-md: 30px;
@@ -47,6 +47,10 @@ select{
   width: 100%;
   max-width: var(--max-size-page);
   margin: 0 auto;
+}
+
+.page-content{
+  width: 100%;
 }
 
 button{

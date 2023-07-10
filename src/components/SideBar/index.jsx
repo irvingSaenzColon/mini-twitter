@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import useSession from "../../hooks/useSession";
 import Button from "../Button";
-import { BellIcon, BookmarkIcon, HomeIcon, SearchIcon, TwitterIcon, UserIcon } from "../../Icons";
+import { BellIcon, BookmarkIcon, ConfigurationIcon, HomeIcon, SearchIcon, TwitterIcon, UserIcon } from "../../Icons";
+import profileImage from '../../assets/profile.webp';
 import './SideBar.css';
 
 export default function SideBar(){
@@ -18,18 +19,15 @@ export default function SideBar(){
                 <li className="side-nav__item"><Link> <UserIcon />Profile</Link></li>
                 <li className="side-nav__item"><Button type={'button'} styleClasses={['button--primary', 'button--full-width']}>Tweet</Button></li>
             </ul>
-            <section>
-                <div>
-                    <div>
-                        <img src="" alt="" />
-                    </div>
+            <section className="side-nav__footer">
+                <button type="button" className="side-nav__footer-btn">
+                    <img src={profileImage} alt="" />
                     <p>
                         <span>Nombre</span>
                         <span>Nombre</span>
                     </p>
-                    <button>...</button>
-                </div>
-
+                    <ConfigurationIcon />
+                </button>
             </section>
         </aside>
     )

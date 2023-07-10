@@ -58,6 +58,24 @@ export const SearchIcon = () => {
     )
 }
 
+export const ConfigurationIcon = () =>{
+    return(
+        <svg width="15" height="4" viewBox="0 0 15 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="1.59091" cy="1.59091" r="1.59091" fill="#1C1C1C"/>
+            <circle cx="7.5" cy="1.59091" r="1.59091" fill="#1C1C1C"/>
+            <circle cx="13.4091" cy="1.59091" r="1.59091" fill="#1C1C1C"/>
+        </svg>
+    );
+}
+
+export const CrossIcon = ({width, height, stroke, strokeWidth}) => {
+    return (
+        <svg width={width || 29} height={height || 29} viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1.52081 26.5208L26.5208 1.52081M26.5208 26.5208L1.52081 1.52081" stroke={ stroke || "#242424"} strokeWidth={ strokeWidth || 3} strokeLinecap="round"/>
+        </svg>
+    );
+}
+
 export const SignUpIcon = ({stroke, strokeWidth, width, height}) => {
     return (
         <svg width={width || 26} height={height || 26} viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -73,4 +91,12 @@ export const PlusIcon = ({stroke, strokeWidth, width, height}) => {
         </svg>
     )
 
+}
+
+export const ArrowLeftIcon = () => {
+    return(
+        <svg width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9.2 17L2 9.5M2 9.5L9.2 2M2 9.5H18" stroke="#222222" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+    );
 }

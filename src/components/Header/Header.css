@@ -1,0 +1,35 @@
+.header{
+    position: sticky;
+    padding: 16px 16px 0px;
+    border-bottom: 1px solid var(--sheikh-white);
+}
+
+.header__title-section{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 16px;
+}
+
+.header__backwards{
+    padding: 8px;
+    width: 35px;
+    height: 35px;
+    border: none;
+    border-radius: 50%;
+    background-color: inherit;
+}
+
+.header__backwards:hover{
+    background-color: var(--onyx)
+}
+
+.header__backwards>svg{
+    width: 100%;
+    height: 100%;
+}
+
+.header__title{
+    font-size: 2rem;
+    color: var(--carbon);
+}
