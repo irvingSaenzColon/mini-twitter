@@ -1,18 +1,22 @@
 :root {
   --ceruleean:      #086788;
   --pristine-seas:  #0f7496;
-  --blue-green:     #07A0C3;
+  --blue-green:     #1D9BF0;
   --gummy-dolphins: #10aed1;
   --black:          #07020d;
   --night:          #0f0916;
-  --onyx:           #636a7a;
+  --onyx:           #dbdbdb;
   --dark-prince:    #677186;
   --stormy-oceans:  #302942;
   --nyanza:         #E2FADB;
+  --doctor:         #f8f8f8;
+  --sheikh-white:   #e2e2e2;
+  --carbon:         #343434;
   --raisin-black:   #2b253a;
 
   --border-sm: 3px;
-  --max-size-page: 1000px;
+  --border-md: 30px;
+  --max-size-page: 950px;
 }
 
 *{
@@ -27,7 +31,7 @@ html{
 }
 
 body{
-  background-color: var(--night);
+  background-color: var(--doctor);
 }
 
 input,
@@ -36,6 +40,13 @@ textarea,
 select{
   font-family: 'Quicksand', sans-serif;
   font-size: 1.5rem;
+}
+
+.main-content{
+  display: flex;
+  width: 100%;
+  max-width: var(--max-size-page);
+  margin: 0 auto;
 }
 
 button{
