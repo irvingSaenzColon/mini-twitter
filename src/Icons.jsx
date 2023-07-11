@@ -49,10 +49,10 @@ export const HomeIcon = () => {
     );
 }
 
-export const SearchIcon = () => {
+export const SearchIcon = ({stroke, strokeWidth}) => {
     return ( 
         <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M18.0529 17.1652C19.5432 15.5548 20.4516 13.415 20.4516 11.0667C20.4516 6.05931 16.3211 2 11.2258 2C6.13054 2 2 6.05931 2 11.0667C2 16.0742 6.13054 20.1335 11.2258 20.1335C13.9316 20.1335 16.3653 18.9887 18.0529 17.1652ZM18.0529 17.1652L23 22.1123" stroke="#1C1C1C" strokeWidth="3" strokeLinecap="round"/>
+            <path d="M18.0529 17.1652C19.5432 15.5548 20.4516 13.415 20.4516 11.0667C20.4516 6.05931 16.3211 2 11.2258 2C6.13054 2 2 6.05931 2 11.0667C2 16.0742 6.13054 20.1335 11.2258 20.1335C13.9316 20.1335 16.3653 18.9887 18.0529 17.1652ZM18.0529 17.1652L23 22.1123" stroke={stroke || 'var(--carbon)'} strokeWidth={strokeWidth || 3} strokeLinecap="round"/>
         </svg>
 
     )

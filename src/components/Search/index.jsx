@@ -7,11 +7,14 @@ export default function Search({value}){
 
     return(
         <label className="search-bar" htmlFor={idSearch}>
-            <SearchIcon />
+            <SearchIcon  stroke={'var(--onyx)'}/>
             <input id={idSearch} type="text" value={value || ''} />
-            <button className="search-bar__button">
-                <CrossIcon stroke={'var(--doctor)'} strokeWidth={4} />
-            </button>
+            {
+                value?.length > 0 &&
+                <button className="search-bar__button">
+                    <CrossIcon stroke={'var(--doctor)'} strokeWidth={4} />
+                </button>
+            }
         </label>
     )
 }

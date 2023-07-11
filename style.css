@@ -5,7 +5,7 @@
   --gummy-dolphins: #10aed1;
   --black:          #07020d;
   --night:          #0f0916;
-  --onyx:           #dbdbdb;
+  --onyx:           #e2e2e2;
   --dark-prince:    #677186;
   --stormy-oceans:  #302942;
   --nyanza:         #E2FADB;
@@ -16,7 +16,7 @@
 
   --border-sm: 3px;
   --border-md: 30px;
-  --max-size-page: 950px;
+  --max-size-page: 1300px;
 }
 
 *{
