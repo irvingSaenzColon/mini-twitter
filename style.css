@@ -1,11 +1,13 @@
 :root {
   --ceruleean:      #086788;
   --pristine-seas:  #0f7496;
+  --blue-mana:      #d4eeffff;
   --blue-green:     #1D9BF0;
   --gummy-dolphins: #10aed1;
+  --exotic-escape:  #84c8e2;
   --black:          #07020d;
   --night:          #0f0916;
-  --onyx:           #e2e2e2;
+  --onyx:           #f0f0f0;
   --dark-prince:    #677186;
   --stormy-oceans:  #302942;
   --nyanza:         #E2FADB;
@@ -51,6 +53,8 @@ select{
 
 .page-content{
   width: 100%;
+  max-width: 650px;
+  border-right: 1px solid var(--onyx);
 }
 
 button{

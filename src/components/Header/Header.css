@@ -3,11 +3,14 @@
     border-bottom: 1px solid var(--sheikh-white);
 }
 
+.header--margin{
+    margin: 16px;
+}
+
 .header__title-section{
     display: flex;
     align-items: center;
     gap: 15px;
-    margin: 16px;
 }
 
 .header__backwards{
@@ -31,4 +34,12 @@
 .header__title{
     font-size: 2rem;
     color: var(--carbon);
+}
+
+.header__buttons{
+    display: flex;
+}
+
+.header__buttons>.header-button{
+    flex-grow: 1;
 }

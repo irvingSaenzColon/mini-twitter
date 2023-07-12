@@ -100,3 +100,12 @@ export const ArrowLeftIcon = () => {
         </svg>
     );
 }
+
+export const MediaIcon = ({stroke, strokeWidth, width, height}) =>{
+    return(
+        <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1 12.2773C1 12.853 1 12.9265 1 13.5C1 15 2 16 3.5 16C7 16 9.5 16 13.5 16C15 16 16 15 16 13.5C16 12.6102 16 12.0884 16 11M1 12.2773C1 9.3396 1 6.84457 1 3.5C1 2 2 1.00002 3.5 1.00002C7.5 0.999989 10 0.999998 13.5 1.00002C15 1.00003 16 2 16 3.5C16 5.96186 16 8.41855 16 11M1 12.2773L4 9.99996L7 12L12 7.99996L16 11M5 6.49999C5.55229 6.49999 6 6.05228 6 5.49999C6 4.94771 5.55229 4.5 5 4.5C4.44772 4.5 4 4.94771 4 5.49999C4 6.05228 4.44772 6.49999 5 6.49999Z" stroke={stroke || 'black'} strokeWidth={strokeWidth || 1} strokeLinejoin="round"/>
+        </svg>
+
+    )
+}

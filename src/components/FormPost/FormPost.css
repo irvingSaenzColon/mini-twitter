@@ -1,0 +1,51 @@
+.form-post{
+    width: 100%;
+    padding: 8px 16px;
+    border-bottom: 1px solid var(--onyx);
+}
+
+.form-post__header{
+    display: flex;
+    gap: 15px;
+    padding: 16px 0;
+}
+
+.form-post__image{
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+
+.form-post__header>textarea{
+    display: block;
+    width: 100%;
+    resize: none;
+    border: none;
+    outline: none;
+    font-size: 2rem;
+    background-color: inherit;
+}
+
+.form-post__meta{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: auto;
+    width: calc(100% - 60px);
+}
+
+.form-post__media{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border-radius: var(--border-md);
+    padding: 9px;
+}
+
+.form-post__media:hover{
+    background-color: var(--blue-mana);
+}
+
+.form-post__media>input[type='file']{
+    display: none;
+}
