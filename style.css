@@ -5,6 +5,11 @@
   --blue-green:     #1D9BF0;
   --gummy-dolphins: #10aed1;
   --exotic-escape:  #84c8e2;
+  --seaweed:        #1ad086;
+  --mint-coffee:    #d3faeb;
+  --borderline-pink:#f50a6d;
+  --sweetly:        #ffe3ef;
+  --silent-night:   #536471;
   --black:          #07020d;
   --night:          #0f0916;
   --onyx:           #f0f0f0;
@@ -12,11 +17,13 @@
   --stormy-oceans:  #302942;
   --nyanza:         #E2FADB;
   --doctor:         #f8f8f8;
+  --white-smoke:    #f5f5f5;
   --sheikh-white:   #e2e2e2;
   --carbon:         #343434;
   --raisin-black:   #949494;
 
   --border-sm: 3px;
+  --border-n: 16px;
   --border-md: 30px;
   --max-size-page: 1300px;
 }
@@ -44,6 +51,10 @@ select{
   font-size: 1.5rem;
 }
 
+.inactive{
+  display: none;
+}
+
 .main-content{
   display: flex;
   width: 100%;
@@ -54,7 +65,7 @@ select{
 .page-content{
   width: 100%;
   max-width: 650px;
-  border-right: 1px solid var(--onyx);
+  border: 1px solid var(--onyx);
 }
 
 button{

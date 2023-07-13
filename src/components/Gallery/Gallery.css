@@ -2,9 +2,11 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(calc( 50% - 5px ), 1fr));
     width: 100%;
-    max-width: 500px;
-    margin: 0 auto;
+    max-width: 512px;
     gap: 5px;
+    border-radius: var(--border-n);
+    overflow: hidden;
+    border: 1px solid var(--onyx);
 }
 
 .grid-gallery--3,

@@ -1,4 +1,6 @@
 .side-navigation{
+    position: sticky;
+    top: 0;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -8,7 +10,6 @@
     font-size: 2rem;
     font-weight: 500;
     color: var(--onyx);
-    border-right: 1px solid var(--onyx);
 }
 .side-navigation>ul{
     list-style-type: none;

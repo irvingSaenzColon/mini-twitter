@@ -109,3 +109,35 @@ export const MediaIcon = ({stroke, strokeWidth, width, height}) =>{
 
     )
 }
+
+export const StatsIcon = ({stroke}) => {
+    return(
+        <svg width="16" height="18" viewBox="0 0 13 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 13V1M8 13V9M1 13V7M12 5V13" stroke={stroke || "black"} strokeWidth="2" strokeLinecap="square" strokeLinejoin="round"/>
+        </svg>
+    )
+}
+
+export const LikeIcon = ({stroke}) => {
+    return(
+        <svg width="19" height="18" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1.00001 4.50004C0.334981 9.15531 8.00002 14 8.00002 14C8.00002 14 15.732 8.89211 15 4.50004C14.5 1.5 11 -0.499969 8.00002 4.00001C5.5 -0.499983 1.5 1 1.00001 4.50004Z" stroke={stroke || 'black'} strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+    );
+}
+
+export const ShareIcon = ({stroke}) => {
+    return(
+        <svg width="18" height="18" viewBox="0 0 19 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9.5 11.5C9.5 11.5 6.5 11.5 5.5 11.5C4.5 11.5 3.5 10.5 3.5 9.5C3.5 8.5 3.5 0.5 3.5 0.5M3.5 0.5L0.5 4M3.5 0.5L6.5 4M9.5 0.5C9.5 0.5 12 0.499999 13.5 0.5C14.6046 0.500001 15.5 1.39543 15.5 2.5C15.5 5.5 15.5 11.5 15.5 11.5M15.5 11.5L18.5 8.5M15.5 11.5L12.5 8.5" stroke={stroke || "black"} strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+    );
+}
+
+export const ReplyIcon = ({stroke}) => {
+    return(
+        <svg width="18" height="18" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8.49998 1.49999C12.249 1.61715 16 2.49998 16 7.49999C16 11.5 7.49998 15.5 7.49998 15.5V13C2.99999 13.5 1 9.5 1 7.49999C1 3.59475 4.59664 1.37801 8.49998 1.49999Z" stroke={stroke || "black"}/>
+        </svg>
+    );
+}

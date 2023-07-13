@@ -87,14 +87,14 @@ export default function FormPost(){
                     id={textAreaId} 
                     ref={textareaRef} 
                     cols="30" rows="2" 
-                    placeholder="What is happening?" 
+                    placeholder="What is happening?!" 
                     value={description} 
                     onChange={onChangeDescription}></textarea>
-                <div className="">
+                <div className={`section--left ${!previews.length ? 'inactive' : ''}`}>
                     <Gallery length={previews.length}> 
-                        {
-                            previews.map(preview => ( <GalleryItem key={preview.id} galleryItem={preview} onRemoveImage={onRemoveImage} editable={true} /> ))
-                        }
+                    {
+                        previews.map(preview => ( <GalleryItem key={preview.id} galleryItem={preview} onRemoveImage={onRemoveImage} editable={true} /> ))
+                    }
                     </Gallery>
                 </div>
             </section>

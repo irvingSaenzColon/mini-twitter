@@ -8,7 +8,7 @@
     display: flex;
     gap: 15px;
     flex-wrap: wrap;
-    padding: 16px 0;
+    padding: 16px 0 0;
 }
 
 .form-post__image{
@@ -51,4 +51,10 @@
 
 .form-post__media>input[type='file']{
     display: none;
+}
+
+.section--left{
+    width: 100%;
+    margin-left: 60px;
+    margin-bottom: 8px;
 }
