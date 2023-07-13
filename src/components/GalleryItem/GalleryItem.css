@@ -1,0 +1,26 @@
+.grid-gallery__item{
+    position: relative;
+}
+
+.grid-gallery__item>img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.grid-gallery__item>button{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid var(--carbon);
+    background-color: var(--carbon);
+
+    transition: background-color 0.25s ease;
+}
+
+.grid-gallery__item>button:hover{
+    background-color: var(--night);
+}

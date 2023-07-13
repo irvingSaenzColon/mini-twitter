@@ -1,0 +1,18 @@
+.grid-gallery{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(calc( 50% - 5px ), 1fr));
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    gap: 5px;
+}
+
+.grid-gallery--3,
+.grid-gallery--4
+{
+    grid-auto-rows: 120px;
+}
+
+.grid-gallery--3>div.grid-gallery__item:first-of-type{
+    grid-row: 1 / span 2;
+}

@@ -1,31 +1,35 @@
-import { useRef, useState } from "react";
+import { useState } from 'react';
+import { CrossIcon } from '../Icons';
+import regularImage from '../assets/profile.webp';
+import './test.css';
 
 export default function TestPage(){
-  
-    const [text, setText] = useState('');
-    const textAreaRef = useRef();
 
-    const onChangeText = (event) => {
-        setText(event.target.value);
-        event.target.style.height = 'inherit';
-        event.target.style.height = `${textAreaRef.current.scrollHeight}px`;
+    const [images, setImages] = useState([
+        regularImage, regularImage, regularImage, regularImage
+    ]);
+
+    const onRemoveImage = (id) => {
+        setImages( images.filter( (image, index) => index !== id) );
     }
 
     return (
         <main>
-           <textarea
-           ref={textAreaRef}
-           style={{
-            fontSize:'1.5rem',
-            resize:'none',
-            overflow:'hidden'
-           }}
-            cols="30" rows="1"
-            placeholder="Escribe algo"
-            value={text}
-            onChange={onChangeText}
-            />
-            
+            <section
+            className={`grid-gallery grid-gallery--${images.length}`}>
+                {
+                    images.map((image, index) => (
+                        <div key={index} className='grid-gallery__item'>
+                            <img
+                                src={image} 
+                                alt="Representative element from a gallery of pictures" />
+                            <button type='button' onClick={()=>onRemoveImage(index)}>
+                                <CrossIcon width={10} height={10} stroke={'var(--doctor)'} strokeWidth={2} />
+                            </button>
+                        </div>        
+                    ))
+                }
+            </section>
         </main>
     )
 }

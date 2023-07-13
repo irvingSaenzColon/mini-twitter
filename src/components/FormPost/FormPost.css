@@ -7,6 +7,7 @@
 .form-post__header{
     display: flex;
     gap: 15px;
+    flex-wrap: wrap;
     padding: 16px 0;
 }
 
@@ -34,6 +35,8 @@
     width: calc(100% - 60px);
 }
 
+
+/* This css is for an input file */
 .form-post__media{
     cursor: pointer;
     display: flex;
