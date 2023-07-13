@@ -19,15 +19,22 @@ export default function FormPost(){
     const [disabled, setDisabled] = useState(true);
 
     useEffect(()=>{
-        if(description.trim().length > 0)
+        if(description.trim().length > 0 || files.length)
             setDisabled(false);
-        else if(description.trim().length === 0 && !disabled)
+        else if((description.trim().length === 0 && !files.length) && !disabled)
             setDisabled(true);
     }, [description]);
 
     useEffect(() => {
-        console.log(files);
-        if(!files.length) return;
+        if( description.trim().length > 0 || files.length )
+            setDisabled(false);
+        else if(description.trim().length === 0 && !files.length)
+            setDisabled(true);
+
+        if(!files.length && previews.length){
+            setPreviews([]);
+            return;
+        } else if(!files.length && !previews.length) return;
 
         const newPreviews = files.map(file => {
             return {id: file.id, url: URL.createObjectURL(file.content)}
@@ -66,7 +73,10 @@ export default function FormPost(){
     }
 
     const onRemoveImage = (id) => {
+        previews.forEach(preview => URL.revokeObjectURL(preview.url) );
         
+        const newFiles = files.filter(file => file.id !== id);
+        setFiles(newFiles);
     }
 
     return(

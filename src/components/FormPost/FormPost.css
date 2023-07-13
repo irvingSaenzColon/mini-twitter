@@ -19,7 +19,7 @@
 
 .form-post__header>textarea{
     display: block;
-    width: 100%;
+    width: calc(100% - 60px);
     resize: none;
     border: none;
     outline: none;
