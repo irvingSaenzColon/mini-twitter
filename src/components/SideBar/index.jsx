@@ -11,12 +11,12 @@ export default function SideBar(){
     return(
         <aside className="side-navigation">       
             <ul>
-                <li className="side-nav__item side-nav__item--logo"><Link> <TwitterIcon /></Link></li>
-                <li className="side-nav__item side-nav__item--active"><Link> <HomeIcon />Home</Link></li>
-                <li className="side-nav__item"><Link> <SearchIcon/>Explore</Link></li>
+                <li className="side-nav__item side-nav__item--logo"><Link to={'/'}> <TwitterIcon /></Link></li>
+                <li className="side-nav__item side-nav__item--active"><Link to={'/'}> <HomeIcon />Home</Link></li>
+                <li className="side-nav__item"><Link to={'search'}> <SearchIcon/>Explore</Link></li>
                 <li className="side-nav__item"><Link> <BellIcon />Notifications</Link></li>
                 <li className="side-nav__item"><Link> <BookmarkIcon />Bookmarks</Link></li>
-                <li className="side-nav__item"><Link> <UserIcon />Profile</Link></li>
+                <li className="side-nav__item"><Link to={'/profile/2'}> <UserIcon />Profile</Link></li>
                 <li className="side-nav__item"><Button type={'button'} styleClasses={['button--primary', 'button--full-width']}>Tweet</Button></li>
             </ul>
             <section className="side-nav__footer">

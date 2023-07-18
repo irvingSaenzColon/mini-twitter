@@ -1,13 +1,13 @@
 import { useId } from "react"
 import { CrossIcon, SearchIcon } from "../../Icons";
-import './Search.css';
+import './SearchBar.css';
 
-export default function Search({value, setValue}){
+export default function SearchBar({value, setValue}){
     const idSearch = useId();
 
     return(
         <label className="search-bar" htmlFor={idSearch}>
-            <SearchIcon  stroke={'var(--onyx)'}/>
+            <SearchIcon  stroke={'var(--silent-night)'}/>
             <input id={idSearch} onChange={(event) => setValue(event.target.value) } type="text" value={value} />
             {
                 value?.length > 0 &&

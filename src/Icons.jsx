@@ -141,3 +141,12 @@ export const ReplyIcon = ({stroke}) => {
         </svg>
     );
 }
+
+export const CalendarIcon = () => {
+    return (
+        <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3.5 1V4.00008M10 1V4.00008M2 7H4M5.5 7H7.5M9 7H11M2 10H4M5.5 10H7.5M2 2.50008C1 2.50004 0.500003 3 0.500003 4.00008C0.500001 7.00008 0.499998 9 0.500001 12.5C0.500002 13.273 0.999999 14 2 14C5 14 7.5 14 11.5 14C12.5 14 13 13.4999 13 12.5C13 9.5 13 7.00008 13 4.00008C13 3.00004 12.5 2.50004 11.5 2.50008C8.5 2.50003 5.5 2.50009 2 2.50008Z" stroke="#536471" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+
+    )
+}

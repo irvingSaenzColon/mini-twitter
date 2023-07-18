@@ -1,0 +1,34 @@
+.header-profile>section:first-of-type{
+    width: 100%;
+    height: 200px;
+    background-color: var(--dark-prince);
+}
+
+.header-profile__data{
+    padding: 8px 16px;
+}
+.header-profile__cover{
+    width: 100%;
+    height: 100%;
+}
+
+.header-profile__profile{
+    width: 175px;
+    height: 175px;
+    border: 4px solid var(--doctor);
+    border-radius: 50%;
+    background-color: var(--dark-prince);
+    margin-top: -15%;
+}
+
+
+.header-profile__name{
+    margin-bottom: 4px;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.header-profile__nickname{
+    font-size: 1.4rem;
+    color: var(--silent-night);
+}

@@ -23,9 +23,9 @@
     border: 1px solid var(--onyx);
     border-radius: var(--border-md);
     outline: none;
-    padding: 8px 28px 8px 16px;
+    padding: 8px 28px 8px 36px;
     font-size: 1.5rem;
-    background-color: inherit;
+    background-color: var(--beluga);
 }
 
 .search-bar>button{

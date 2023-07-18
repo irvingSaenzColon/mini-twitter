@@ -19,7 +19,7 @@ export const posts = [
         nickname: 'Once',
         date : '2023/07/10',
         profile: 'https://staticg.sportskeeda.com/editor/2023/05/ea076-16852869739110-1920.jpg',
-        description: '¿¡Quééééééééé pedo weeeeeee!?',
+        description: '¿¡Quééééééééé pedo weeeeeee!? Me convertí en veracruzano',
         images: [
             {id: '1a56e5', url: 'https://static.nationalgeographic.es/files/styles/image_3200/public/2774.600x450.jpg?w=1600'}
         ],

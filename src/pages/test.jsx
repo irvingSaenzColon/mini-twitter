@@ -1,35 +1,48 @@
-import { useState } from 'react';
-import { CrossIcon } from '../Icons';
-import regularImage from '../assets/profile.webp';
+import { useEffect, useRef, useState } from 'react';
+
 import './test.css';
 
 export default function TestPage(){
 
-    const [images, setImages] = useState([
-        regularImage, regularImage, regularImage, regularImage
-    ]);
+    const [descriptionOriginal, setDescriptionOriginal] = useState('');
+    const [descriptionSplited, setDescriptionSplited] = useState('');
+    const spanRef = useRef();
 
-    const onRemoveImage = (id) => {
-        setImages( images.filter( (image, index) => index !== id) );
+    useEffect(()=>{
+        const arr = descriptionOriginal.split(new RegExp(/(#[A-Za-z0-9_]+)/, 'gi'));
+        console.log(arr);
+        const innerHtml = arr.map(words => `<span class="${(words[0] === '#' && words.length > 1) ? 'input__haighlight' : ''}">${words}</span>`)
+        console.log(innerHtml.join(' '));
+        spanRef.current.innerHtml = innerHtml.join(' ');
+
+    }, [descriptionOriginal])
+
+    const onChangeDescription = (event) => {
+        event.preventDefault()
+        const desc = event.target.innerText.slice(0, 254);
+
+        setDescriptionOriginal(desc);
+
+        // descriptionSplited.map(words => (<span className={(words[0] === '#' && words.length > 1) ? 'input__haighlight' : ''}>{words}</span>))
+
+        // This handles the auto-resize of a textarea whenever it reaches the end.
+        event.target.style.height = 'inherit';
+        event.target.style.height = `${spanRef.current.scrollHeight}px`;
     }
 
     return (
-        <main>
-            <section
-            className={`grid-gallery grid-gallery--${images.length}`}>
-                {
-                    images.map((image, index) => (
-                        <div key={index} className='grid-gallery__item'>
-                            <img
-                                src={image} 
-                                alt="Representative element from a gallery of pictures" />
-                            <button type='button' onClick={()=>onRemoveImage(index)}>
-                                <CrossIcon width={10} height={10} stroke={'var(--doctor)'} strokeWidth={2} />
-                            </button>
-                        </div>        
-                    ))
-                }
-            </section>
+        <main>  
+            <span 
+            ref={spanRef} 
+            className='input' 
+            contentEditable={true} 
+            suppressContentEditableWarning={true}
+            
+            value={descriptionSplited}
+            onInput={onChangeDescription}
+            />
+            
+            
         </main>
     )
 }

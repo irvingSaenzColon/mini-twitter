@@ -1,5 +1,5 @@
 import { ArrowLeftIcon } from '../../Icons';
-import Search from '../Search';
+import SearchBar from '../SearchBar';
 import './Header.css';
 
 export default function Header({children, title, returnButton = false, searchInput = false}){
@@ -17,7 +17,7 @@ export default function Header({children, title, returnButton = false, searchInp
                     }
                     <h1 className='header__title'>{title}</h1>
                 </section>
-                { searchInput && <Search /> }
+                { searchInput && <SearchBar /> }
             </section>
             <section className='header__buttons'>
                 {children}

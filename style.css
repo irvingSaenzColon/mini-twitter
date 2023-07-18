@@ -5,6 +5,7 @@
   --blue-green:     #1D9BF0;
   --gummy-dolphins: #10aed1;
   --exotic-escape:  #84c8e2;
+  --beluga:         #eff3f4;
   --seaweed:        #1ad086;
   --mint-coffee:    #d3faeb;
   --borderline-pink:#f50a6d;
@@ -79,8 +80,10 @@ button{
 }
 
 .subtitle{
-  font-size: 2.4rem;
-  color: var(--ceruleean);
+  margin-bottom: 16px;
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--carbon);
 }
 
 .label{
@@ -94,6 +97,18 @@ button{
   color: var(--onyx);
 }
 
+.pd-nm{
+  padding: 8px 16px;
+}
+
+.mr-bt{
+  margin-bottom: 16px;
+}
+
+.bd-bt{
+  border-bottom: 1px solid var(--onyx);
+}
+
 .info > a{
   text-decoration: none;
   color: var(--blue-green);
@@ -103,4 +118,20 @@ button{
 
 .info > a:hover{
   color: var(--ceruleean);
+}
+
+.flex{
+  display: flex;
+}
+
+.flex--gap-md{
+  gap: 15px;
+}
+
+.flex--between{
+  justify-content: space-between;
+}
+
+.flex--align-start{
+  align-items: start;
 }

@@ -1,0 +1,23 @@
+.explore-item{
+    display: block;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 8px 16px;
+}
+
+.explore-item:hover{
+    background-color: var(--onyx);
+}
+
+.explore-item>span,
+.explore-item>small{
+    font-size: 1.3rem;
+    color: var(--silent-night);
+}
+
+.explore-item>p{
+    margin: 4px 0;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--carbon);
+}
