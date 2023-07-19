@@ -7,6 +7,10 @@
     border: 1px solid var(--raisin-black);
 }
 
+.input--filled>.input__placeholder{
+    top: 5px;
+}
+
 .input--error{
     animation-name: input-error;
     animation-duration: 0.5s;
@@ -16,17 +20,14 @@
 
 .input__placeholder{
     display: block;
-    padding: 2px 4px;
+    position: relative;
+    padding: 2px 0px 0 16px;
     font-size: 1.5rem;
-    background-color: inherit;
+    width: 90%;
+    background-color: var(--doctor);
     color: var(--carbon);
-    transform: translate(8px, 20px);
-    transition: transform 0.25s ease, font-size 0.25s ease, color 0.25s ease;
-}
-
-.input--filled>.input__placeholder{
-    font-size: 1.3rem;
-    transform: translate(0);
+    top: 23px;
+    transition: top 0.25s ease, font-size 0.25s ease, color 0.25s ease;
 }
 
 .input>input{
@@ -39,14 +40,17 @@
     background-color: inherit;
 }
 
-.input>input:focus{
-    color: var(--carbon);
+.input__placeholder:has(+ input:focus){
+    color: var(--blue-green);
+    top: 5px;
 }
 
-.input>input:focus ~ .input__placeholder{
-    font-size: 1.3rem;
-    color: var(--blue-green);
-    transform: translate(-8px, -20px);
+.input:has(input:focus){
+    outline: 2px solid var(--blue-green);
+}
+
+.input>input:focus{
+    color: var(--carbon);
 }
 
 .input__message{

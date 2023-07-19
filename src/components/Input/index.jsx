@@ -13,7 +13,7 @@ export default function Input({value, setValue, type, placeholder, message, erro
     }
 
     return(
-        <label className={`input ${filled ? 'input--filled' : ''} ${error && 'input--error'}`} htmlFor={inputId} >
+        <label className={`input ${filled ? 'input--filled' : ''}${error ? 'input--error' : ''}`} htmlFor={inputId} >
             <span className="input__placeholder">{placeholder || 'value'}</span>
             <input 
                 id={inputId} 
