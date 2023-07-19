@@ -14,13 +14,13 @@ export default function Input({value, setValue, type, placeholder, message, erro
 
     return(
         <label className={`input ${filled ? 'input--filled' : ''} ${error && 'input--error'}`} htmlFor={inputId} >
+            <span className="input__placeholder">{placeholder || 'value'}</span>
             <input 
                 id={inputId} 
                 value={value || ''} 
                 type={type || ''} 
                 onChange={(event)=>setValue(event.target.value)} 
                 onBlur={onBlur} />
-            <span className="input__placeholder">{placeholder || 'value'}</span>
             <span className="input__message">{message || ''}</span>
         </label>
     )

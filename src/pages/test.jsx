@@ -42,7 +42,9 @@ export default function TestPage(){
             onInput={onChangeDescription}
             />
             
-            
+            <div className='circular-progress' width={`100px`} height={`100px`}>
+
+            </div>
         </main>
     )
 }

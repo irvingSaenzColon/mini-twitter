@@ -1,12 +1,6 @@
-.input{
-    display: block;
-    padding: 8px 16px;
-    border: 1px solid var(--silent-night);
-    border-radius: var(--border-md);
-    outline: none;
-    font-size: 1.5rem;
-}
-
-.input__haighlight{
-    color: var(--blue-green);
+.circular-progress{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: red;
 }

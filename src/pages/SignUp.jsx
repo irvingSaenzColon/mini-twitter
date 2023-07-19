@@ -24,22 +24,19 @@ export default function SignUp(){
 
   const [nickname, setNickname] = useState('');
   const [nicknameError, setNicknameError] = useState(false);
-  const [email, setEmail] = useState('');
-  const [emailError, setEmailError] = useState(false);
   const [password, setPassword] = useState('');
   const [passwordError, setPasswordError] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState('');
   const [confirmPasswordError, setConfirmPasswordError] = useState(false);
-
+  
   const [name, setName] = useState('');
   const [nameError, setNameError] = useState(false);
-  const [fathersName, setFathersName] = useState('');
-  const [fathersNameError, setFathersNameError] = useState(false);
-  const [mothersName, setMothersName] = useState('');
-  const [mothersNameError, setMothersNameError] = useState(false);
+  const [telephone, setTelephone] = useState('');
+  const [telephoneError, setTelephoneError] = useState(false);
+  const [email, setEmail] = useState('');
+  const [emailError, setEmailError] = useState(false);
   const [birthdate, setBirthdate] = useState('');
   const [birthdateError, setBirthdateError] = useState(false);
-  const [gender, setGender] = useState('male');
 
   const [profileImage, setProfileImage] = useState();
 
@@ -68,9 +65,6 @@ export default function SignUp(){
       // fetch data an prepare everything to login
       const userData = {
         name,
-        fathersName,
-        mothersName,
-        gender,
         birthdate,
         nickname,
         email,
@@ -82,10 +76,6 @@ export default function SignUp(){
       navigate('/sign-in');
 
       console.dir(userData);
-  }
-
-  const handleRadios = (event) => {
-    setGender(event.target.value);
   }
 
   const onPreviousPage = (event) => {
@@ -101,15 +91,13 @@ export default function SignUp(){
     if(counter === 0) {
       valid = validateValues([
         {value: name, pattern: REGULAR_PATTERNS.TEXT_PATTERN, setError: setNameError},
-        {value: fathersName, pattern: REGULAR_PATTERNS.TEXT_PATTERN, setError: setFathersNameError},
-        {value: mothersName, pattern: REGULAR_PATTERNS.TEXT_PATTERN, setError: setMothersNameError},
+        {value: email, pattern: REGULAR_PATTERNS.EMAIL_PATTERN, setError: setEmailError},
         {value: birthdate, pattern: REGULAR_PATTERNS.DATE_PATTERN, setError: setBirthdateError}
       ]);
     }
     else if(counter === 1){
       valid = validateValues([
         {value: nickname, pattern: REGULAR_PATTERNS.WORD_PATTERN, setError: setNicknameError},
-        {value: email, pattern: REGULAR_PATTERNS.EMAIL_PATTERN, setError: setEmailError},
         {value: password, pattern: REGULAR_PATTERNS.PASSWORD_PATTERN, setError: setPasswordError}
       ]);
     }
@@ -132,22 +120,13 @@ export default function SignUp(){
           <StepForm active={counter === 0} showAnimation = {animation} hideAnimation={hideAnimation}>
           <h2 className="subtitle">Personal Data</h2>
             <Input value={name} setValue={setName} type={'text'} placeholder={'name'} message={'Please, enter your name'} error = {nameError} />
-            <Group styleClasses={['group--gap-bg']} >
-                <Input value={fathersName} setValue={setFathersName} type={'text'} placeholder={"father's name"} message={"Please, enter your father's last name"}  error={fathersNameError}/>
-                <Input value={mothersName} setValue={setMothersName} type={'text'} placeholder={"mother's name"} message={"Please, enter your father's last name"} error={mothersNameError}/>
-            </Group>
-            <p className="label">Gender</p>
-            <Group onChange={handleRadios} styleClasses={['group--space-between']}>
-              <Radio placeholder={'male'} name={'gender'} value= {gender} />
-              <Radio placeholder={'female'} name={'gender'} value={gender} />
-              <Radio placeholder={'other'} name={'gender'} value={gender} />
-            </Group>
+            <Input value={telephone} setValue={setTelephone} type={'text'} placeholder={'telephone'} message={'Please, enter a valid telephone'} error = {telephoneError} />
+            <Input value={email} setValue={setEmail} type={'email'} placeholder={'email'} message={"Enter a valid email"} error={emailError}/>
             <Input value={birthdate} setValue={setBirthdate} type={'date'} placeholder={'Birthdate'} message={"Please enter your birthdate"} error={birthdateError}/>
           </StepForm>
           <StepForm active={counter === 1} showAnimation = {animation} hideAnimation={hideAnimation}>
             <h2 className="subtitle">Account Data</h2>
             <Input value={nickname} setValue={setNickname} type={'text'} placeholder={'nickname'} message={"A nickname can have symbols without white spaces"} error={nicknameError} />
-            <Input value={email} setValue={setEmail} type={'email'} placeholder={'email'} message={"Enter a valid email"} error={emailError}/>
             <Input value={password} setValue={setPassword} type={'password'} placeholder={'password'} message={"A password must have an uppercase a lowercase a symbol and at least characters"} error={passwordError} />
             <Input value={confirmPassword} setValue={setConfirmPassword} type={'password'} placeholder={'confirm password'} />
             

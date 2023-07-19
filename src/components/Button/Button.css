@@ -70,6 +70,16 @@
     background-color: var(--exotic-escape);
 }
 
+.button--third{
+    border: 1px solid var(--onyx);
+    color: var(--carbon);
+    background-color: transparent;
+}
+
+.button--third:hover{
+    background-color: var(--onyx);
+}
+
 .button-link{
     border: none;
     color: var(--blue-green);
