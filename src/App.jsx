@@ -7,14 +7,16 @@ import Layout from "./pages/Layout";
 import Explore from "./pages/Explore";
 import Search from "./pages/Search";
 import Profile from "./pages/Profile";
+import Landing from "./pages/Landing";
 
 function App(){
 
     return(
         <>
             <Routes>
+                <Route path="/" element={<Landing />} />
                 <Route element={<Layout />}>
-                    <Route path="/" element={<Home />} />
+                    <Route path="home" element={<Home />} />
                     <Route path="profile/:id" element={<Profile />} />
                     <Route path="search" element={<Explore />} />
                     <Route path="search/:searched" element={<Search />} />

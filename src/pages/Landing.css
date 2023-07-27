@@ -1,0 +1,112 @@
+.landing{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.landing__cover{
+    display: flex;
+    align-items: center;
+    order: 2;
+    width: 100%;
+    height: 300px;
+    background: url('../assets/landing.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.landing__cover>svg{
+    width: 100%;
+    min-height: 250px;
+}
+
+.landing__content{
+    padding: 32px 62px;
+}
+
+.landing__content h1{
+    margin:  56px 0 24px;
+    font-size: 6.4rem;
+    font-weight: 900;
+}
+
+.landing__content h2{
+    font-size: 3.2rem;
+    font-weight: 800;
+}
+
+.landing__content h3{
+    font-size: 1.8rem;
+}
+
+.login__login-type{
+    width: 100%;
+    max-width: 300px;
+}
+
+.login__login-type>p{
+    position: relative;
+    width: 100%;
+    text-align: center;
+    font-size: 1.5rem;
+    margin: 4px 0;
+}
+
+.login__login-type>p>span{
+    padding: 4px;
+    background-color: var(--doctor);
+}
+
+.login__login-type>p::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    width: 100%;
+    height: 1px;
+    z-index: -1;
+    background-color: var(--raisin-black);
+}
+
+
+.wrapper{
+    opacity: 0;
+    border: none;
+    outline: none;
+    position: fixed;
+    display: block;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.wrapper--show{
+    animation-name: wrapper-show;
+    animation-duration: 0.5s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+}
+
+@keyframes wrapper-show {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    .landing{
+        flex-wrap: nowrap;
+    }
+    .landing__cover{
+        height: 100vh;
+        width: 33%;
+    }
+    .landing__content{
+        width: 77%;
+        order: 2;
+    }
+}

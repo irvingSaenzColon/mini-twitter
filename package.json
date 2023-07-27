@@ -20,7 +20,7 @@
   },
   "eslintConfig": {
     "extends": [
-      "./nodel_modules/standard/eslintrc.json"
+      "./node_modules/standard/eslintrc.json"
     ]
   }
 }

@@ -1,14 +1,15 @@
 .input{
     position: relative;
     display: block;
-    margin: 16px 0;
+    margin: 16px 0 0;
     width: 100%;
     border-radius: var(--border-sm);
     border: 1px solid var(--raisin-black);
 }
 
-.input--filled>.input__placeholder{
-    top: 5px;
+.input--filled .input__placeholder{
+    font-size: 1.2rem;
+    top: 8px;
 }
 
 .input--error{
@@ -16,33 +17,47 @@
     animation-duration: 0.5s;
     animation-fill-mode: forwards;
     animation-timing-function: ease;
+    border: 1px solid #ff507aff;
+}
+
+.input__header{
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    padding: 8px 16px 4px 16px;
 }
 
 .input__placeholder{
     display: block;
-    position: relative;
-    padding: 2px 0px 0 16px;
+    position: absolute;
+    left: 16px;
+    top: 25px;
     font-size: 1.5rem;
-    width: 90%;
+    width: 80%;
     background-color: var(--doctor);
-    color: var(--carbon);
-    top: 23px;
+    color: var(--raisin-black);
     transition: top 0.25s ease, font-size 0.25s ease, color 0.25s ease;
 }
 
 .input>input{
     outline: none;
     border: none;
-    padding: 8px 16px;
+    padding: 0px 16px 8px;
     width: 100%;
     font-size: 1.5rem;
     color: var(--carbon);
     background-color: inherit;
 }
 
-.input__placeholder:has(+ input:focus){
+.input__header:has(+ input:focus)>.input__max-length--visible{
+    opacity: 1;
+}
+
+.input__header:has(+ input:focus)>.input__placeholder{
     color: var(--blue-green);
-    top: 5px;
+    font-size: 1.2rem;
+    top: 8px;
 }
 
 .input:has(input:focus){
@@ -54,7 +69,6 @@
 }
 
 .input__message{
-    display: none;
     margin-top: 4px;
     font-size: 1.3rem;
     color: #ff507aff;
@@ -62,6 +76,12 @@
 
 .input--error > span.input__message{
     display: block;
+}
+
+.input__max-length{
+    font-size: 1.2rem;
+    color: var(--raisin-black);
+    opacity: 0;
 }
 
 @keyframes input-error {

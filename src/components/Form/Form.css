@@ -1,12 +1,32 @@
 .form{
+    position: relative;
     width: 100%;
+    padding: 8px 16px 24px;
+    border-radius: var(--border-n);
+    background-color: var(--doctor);
+}
+
+.form--80{
+    height: 90vh;
+}
+
+.form--no-overflow{
+    overflow: hidden;
+}
+
+.form--center{
+    margin: auto;
 }
 
 .form--md{
-    max-width: 450px;
+    max-width: 600px;
 }
 
 .form--space{
     margin-top: 24px;
     margin-bottom: 24px;
+}
+
+.form--paddlog{
+    padding: 24px 80px;
 }

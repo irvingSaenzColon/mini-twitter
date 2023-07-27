@@ -4,6 +4,7 @@ export const REGULAR_PATTERNS = {
     DATE_PATTERN : /^([0-9]{4})-([0-9]{2})-([0-9]{2})$/,
     EMAIL_PATTERN : /^([a-z0-9]+([.a-z0-9]+)?)+(\+[a-z0-9]+)?@[a-z]+(\.[a-z]+)?\.([a-z]+)$/,
     PASSWORD_PATTERN : /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\(!|¡”#$%&;/=’?¡¿:;,.\-_+*{\][}\])]).{8,}$/,
+    NUMBER_PATTERN: /^([0-9])+$/
 }; 
 
 export function validate(value, pattern){

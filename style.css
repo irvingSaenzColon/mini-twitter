@@ -52,9 +52,7 @@ select{
   font-size: 1.5rem;
 }
 
-.inactive{
-  display: none;
-}
+
 
 .main-content{
   display: flex;
@@ -97,6 +95,10 @@ button{
   color: var(--onyx);
 }
 
+.info--darker{
+  color: var(--raisin-black);
+}
+
 .pd-nm{
   padding: 8px 16px;
 }
@@ -132,6 +134,22 @@ button{
   justify-content: space-between;
 }
 
+.flex--center-m{
+  justify-content: center;
+}
+
+.flex-center-s{
+  align-items: center;
+}
+
+.flex--direction-v{
+  flex-direction: column;
+}
+
 .flex--align-start{
   align-items: start;
+}
+
+.inactive{
+  display: none;
 }
