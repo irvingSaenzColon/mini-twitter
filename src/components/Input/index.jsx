@@ -1,7 +1,7 @@
 import { useId, useState } from "react";
 import './Input.css';
 
-export default function Input({value, setValue, type, placeholder, message, error, maxLength = 0}){
+export default function Input({value, onChangeInput, type, placeholder, message, error, maxLength = 0}){
     const inputId = useId();
     const [filled, setFilled] = useState(false);
     
@@ -10,15 +10,6 @@ export default function Input({value, setValue, type, placeholder, message, erro
             setFilled(true);
         else if(!value.trim(0).length)
             setFilled(false);
-    }
-
-    const onChange = (event) => {
-        if(maxLength === 0){
-            setValue(event.target.value);
-            return;
-        }
-
-        setValue(event.target.value.slice(0, maxLength));
     }
 
     return(
@@ -32,7 +23,8 @@ export default function Input({value, setValue, type, placeholder, message, erro
                 id={inputId}
                 value={value || ''}
                 type={type || ''}
-                onChange={onChange}
+                name={placeholder}
+                onChange={(event) => onChangeInput(event.target.value, maxLength, placeholder)}
                 onBlur={onBlur} />
         </label>
         {

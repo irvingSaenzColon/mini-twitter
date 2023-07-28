@@ -70,6 +70,16 @@ select{
 button{
   cursor: pointer;
 }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type=number] {
+    -moz-appearance:textfield; /* Firefox */
+}
 
 .title{
   margin-bottom: 24px;
@@ -130,12 +140,20 @@ button{
   gap: 15px;
 }
 
+.flex--gap-sm{
+  gap: 5px;
+}
+
 .flex--between{
   justify-content: space-between;
 }
 
 .flex--center-m{
   justify-content: center;
+}
+
+.flex-wrap{
+  flex-wrap: wrap;
 }
 
 .flex-center-s{

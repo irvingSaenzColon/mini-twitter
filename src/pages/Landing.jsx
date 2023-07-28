@@ -2,14 +2,14 @@ import { useState, useEffect } from 'react';
 import { useCounter } from '../hooks/counter';
 import Form from '../components/Form';
 import StepForm from '../components/StepForm';
-import Group from '../components/Group';
 import Input from '../components/Input';
 import Button from '../components/Button';
 import ProfileImage from '../components/ProfileImage';
 import { validateValues, REGULAR_PATTERNS } from '../helpers';
+import CheckBox from '../components/CheckBox';
+import useSession from '../hooks/useSession';
 import { CrossIcon, TwitterIcon, SignUpIcon, ArrowLeftIcon } from '../Icons';
 import './Landing.css';
-import useSession from '../hooks/useSession';
 
 export default function Landing() {
     const [animation, setAnimation] = useState('');
@@ -17,27 +17,31 @@ export default function Landing() {
     const { counter, increaseCounter, decreaseCounter } = useCounter(0);
     const { saveSession } = useSession();
     const [mode, setMode] = useState(true);
+    const initialValue = {
+        name: '',
+        nickname: '',
+        birthdate: '',
+        email: '',
+        phone: '',
+        password: '',
+        confirmPassword: ''
+    }
 
     const [modalMode, setModalMode] = useState(false);
     const [signUpModal, setSignUpModal] = useState(false);
     const [signUpType, setSignUpType] = useState(true);
 
+    const [userData, setUserData] = useState(initialValue);
 
-    const [nickname, setNickname] = useState('');
+  
     const [nicknameError, setNicknameError] = useState(false);
-    const [password, setPassword] = useState('');
     const [passwordError, setPasswordError] = useState(false);
-    const [confirmPassword, setConfirmPassword] = useState('');
     const [confirmPasswordError, setConfirmPasswordError] = useState(false);
-
-    const [name, setName] = useState('');
     const [nameError, setNameError] = useState(false);
-    const [telephone, setTelephone] = useState('');
     const [telephoneError, setTelephoneError] = useState(false);
-    const [email, setEmail] = useState('');
     const [emailError, setEmailError] = useState(false);
-    const [birthdate, setBirthdate] = useState('');
     const [birthdateError, setBirthdateError] = useState(false);
+    const [preferences, setPreferences] = useState([]);
 
     const [profileImage, setProfileImage] = useState();
 
@@ -60,8 +64,31 @@ export default function Landing() {
         }, 500);
     }, [hideAnimation]);
 
+    useEffect(()=> {
+        console.dir(userData);
+    }, [userData])
+
     const onCloseModal = (event) => {
 
+    }
+
+    const onInputChange = (value, name, maxLength)=>{        
+            if(maxLength === 0){
+                setUserData({...userData, [name]: value})
+                return;
+            }
+            setUserData({...userData, [name]: value.slice(0, maxLength)})
+    }
+
+    const onSelectPreferences = (event) => {
+        const val = event.target.value;
+        const pref = preferences.find(preference => preference === val);
+        if(!pref){
+            setPreferences([...preferences, event.target.value]);
+            return;
+        }
+        const newPrefs = preferences.filter(preference => preference !== val);
+        setPreferences(newPrefs);
     }
 
     const onOpenSignUpModal = (event) => {
@@ -97,10 +124,16 @@ export default function Landing() {
 
     }
 
+    const cleanModalData = () => {
+     setUserData(initialValue);
+     setPreferences([]);
+    }
+
     const onPreviousPage = (event) => {
         if (counter <= 0) {
             setModalMode(false);
             setSignUpModal(false);
+            cleanModalData();
             return;
         }
 
@@ -112,12 +145,16 @@ export default function Landing() {
         //First it should be validated current inputs of a form
         let valid = 0;
         if (counter === 0) {
-            // valid = validateValues([
-            //   {value: name, pattern: REGULAR_PATTERNS.TEXT_PATTERN, setError: setNameError},
-            //   {value: email, pattern: REGULAR_PATTERNS.EMAIL_PATTERN, setError: setEmailError},
-            //   {value: birthdate, pattern: REGULAR_PATTERNS.DATE_PATTERN, setError: setBirthdateError},
-            //   {value: telephone, pattern: REGULAR_PATTERNS.NUMBER_PATTERN, setError: setTelephoneError}
-            // ]);
+            valid = validateValues([
+              {value: name, pattern: REGULAR_PATTERNS.TEXT_PATTERN, setError: setNameError},
+              signUpType ? 
+              {value: telephone, pattern: REGULAR_PATTERNS.NUMBER_PATTERN, setError: setTelephoneError}
+              : 
+              {value: email, pattern: REGULAR_PATTERNS.EMAIL_PATTERN, setError: setEmailError} 
+              ,
+              {value: birthdate, pattern: REGULAR_PATTERNS.DATE_PATTERN, setError: setBirthdateError},
+              
+            ]);
         }
         else if (counter === 1) {
             valid = validateValues([
@@ -173,32 +210,49 @@ export default function Landing() {
                                             <CrossIcon width={15} height={15} strokeWidth={4} />
                                     }
                                 </button>
+                                <h2>Step {counter + 1} from {4}</h2>
                                 <h2 className='subtitle'>Create an account</h2>
                                 <StepForm active={counter === 0} showAnimation={animation} hideAnimation={hideAnimation}>
-                                    <Input value={name} setValue={setName} type={'text'} placeholder={'name'} message={'Please, enter your name'} error={nameError} maxLength={50} />
+                                    <Input value={userData.name} onChangeInput={onInputChange} type={'text'} placeholder={'name'} message={'Please, enter your name'} error={nameError} maxLength={50} />
                                     {
                                         signUpType
                                             ?
-                                            <Input value={telephone} setValue={setTelephone} type={'text'} placeholder={'telephone'} message={'Please, enter a valid telephone'} error={telephoneError} />
+                                            <Input value={userData.phone} onChangeInput={onInputChange} type={'number'} placeholder={'telephone'} message={'Please, enter a valid telephone'} error={telephoneError} />
                                             :
-                                            <Input value={email} setValue={setEmail} type={'email'} placeholder={'email'} message={"Enter a valid email"} error={emailError} />
+                                            <Input value={userData.email} onChangeInput={onInputChange} type={'email'} placeholder={'email'} message={"Enter a valid email"} error={emailError} />
 
                                     }
                                     <button className='button--block button-link button--right' onClick={(event) => setSignUpType(!signUpType)}> Use {signUpType ? 'email' : 'telephone'} </button>
-                                    <h3>Birthdate</h3>
-                                    <p className='info info--darker'>This information is not gonna be public. Confirm you age even if your account if or enterprise purposes, pets or other stuff.</p>
-                                    <Input value={birthdate} setValue={setBirthdate} type={'date'} placeholder={'Birthdate'} message={"Please enter your birthdate"} error={birthdateError} />
+                                    <h3 className='subtitle'>Birthdate</h3>
+                                    <p className='info info--darker'>This information isn't gonna be public. Confirm you age even if your account if or enterprise purposes, pets or other stuff.</p>
+                                    <Input value={userData.birthdate} onChangeInput={onInputChange} type={'date'} placeholder={'Birthdate'} message={"Please enter your birthdate"} error={birthdateError} />
                                 </StepForm>
                                 <StepForm active={counter === 1} showAnimation={animation} hideAnimation={hideAnimation}>
-                                    <Input value={nickname} setValue={setNickname} type={'text'} placeholder={'nickname'} message={"A nickname can have symbols without white spaces"} error={nicknameError} />
-                                    <Input value={password} setValue={setPassword} type={'password'} placeholder={'password'} message={"A password must have an uppercase a lowercase a symbol and at least characters"} error={passwordError} />
-                                    <Input value={confirmPassword} setValue={setConfirmPassword} type={'password'} placeholder={'confirm password'} />
+                                    <h3>Nickname</h3>
+                                    <p className='info info--darker'>With a nickname users from all over the world can find you without knowing all your name</p>
+                                    <Input value={userData.nickname} onChangeInput={onInputChange} type={'text'} placeholder={'nickname'} message={"A nickname can have symbols without white spaces"} error={nicknameError} />
+                                    <Input value={userData.password} onChangeInput={onInputChange} type={'password'} placeholder={'password'} message={"A password must have an uppercase a lowercase a symbol and at least characters"} error={passwordError} />
+                                    <Input value={userData.confirmPassword} onChangeInput={onInputChange} type={'password'} placeholder={'confirm password'} message={'Please, confirm your password by re-enetring the password'} error={confirmPasswordError} />
                                 </StepForm>
                                 <StepForm active={counter === 2} showAnimation={animation} hideAnimation={hideAnimation}>
                                     <ProfileImage placeholder={'Pick an Image for your profile'} image={profileImage} setImage={setProfileImage} />
                                 </StepForm>
+                                <StepForm active={counter === 3} showAnimation={animation} hideAnimation={hideAnimation}>
+                                    <h2 className='subtitle'>Select your preferences</h2>
+                                    <p className='info info--darker'>This will help us to know you a little bit about you</p>
+                                    <section className='flex flex--gap-sm flex--center-m flex-wrap' onChange={onSelectPreferences}>
+                                        <CheckBox placeholder='Art' />
+                                        <CheckBox placeholder='Enterteinment' />
+                                        <CheckBox placeholder='Sports' />
+                                        <CheckBox placeholder='Videogames' />
+                                        <CheckBox placeholder='News' />
+                                        <CheckBox placeholder='Waether' />
+                                        <CheckBox placeholder='Anime' />
+                                        <CheckBox placeholder='Technologie' />
+                                    </section>
+                                </StepForm>
                                 {
-                                    counter !== 2
+                                    counter !== 3
                                         ?
                                         <Button styleClasses={['button--primary', 'button--full-width', 'button--pd-bg']} onClickButton={onNextPage}>Next</Button>
                                         :
@@ -216,8 +270,8 @@ export default function Landing() {
                                     <CrossIcon width={15} height={15} strokeWidth={4} />
                                 </button>
                                 <h2>Login in Twitter</h2>
-                                <Input value={nickname} setValue={setNickname} type={'text'} placeholder={'nickname'} message={"A nickname can have symbols without white spaces"} error={nicknameError} />
-                                <Input value={password} setValue={setPassword} type={'password'} placeholder={'password'} message={"A password must have an uppercase a lowercase a symbol and at least characters"} error={passwordError} />
+                                <Input value={userData.nickname} onChangeInput={onInputChange} type={'text'} placeholder={'nickname'} message={"A nickname can have symbols without white spaces"} error={nicknameError} />
+                                <Input value={userData.password} onChangeInput={onInputChange} type={'password'} placeholder={'password'} message={"A password must have an uppercase a lowercase a symbol and at least characters"} error={passwordError} />
                                 <Button styleClasses={['button--primary', 'button--gap-sm', 'button--right']} type={'submit'}>
                                     <SignUpIcon width={15} height={15} stroke={'var(--nyanza)'} strokeWidth={4} />
                                     <span>Sign Up</span>

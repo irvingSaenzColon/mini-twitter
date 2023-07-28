@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 
 import './test.css';
+import CheckBox from '../components/CheckBox';
 
 export default function TestPage(){
 
@@ -9,6 +10,7 @@ export default function TestPage(){
     const spanRef = useRef();
 
     useEffect(()=>{
+        if(descriptionOriginal.length <= 0) return;
         const arr = descriptionOriginal.split(new RegExp(/(#[A-Za-z0-9_]+)/, 'gi'));
         console.log(arr);
         const innerHtml = arr.map(words => `<span class="${(words[0] === '#' && words.length > 1) ? 'input__haighlight' : ''}">${words}</span>`)
@@ -32,19 +34,7 @@ export default function TestPage(){
 
     return (
         <main>  
-            <span 
-            ref={spanRef} 
-            className='input' 
-            contentEditable={true} 
-            suppressContentEditableWarning={true}
-            
-            value={descriptionSplited}
-            onInput={onChangeDescription}
-            />
-            
-            <div className='circular-progress' width={`100px`} height={`100px`}>
-
-            </div>
+            <CheckBox placeholder='Amigo' />
         </main>
     )
 }

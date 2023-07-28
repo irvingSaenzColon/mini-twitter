@@ -1,0 +1,28 @@
+.checkbox{
+    cursor: pointer;
+    display: block;
+    width: max-content;
+    padding: 8px 16px;
+    border-radius: var(--border-md);
+    border: 2px solid var(--raisin-black);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--raisin-black);
+    background-color: inherit;
+
+    transition: background-color 0.25s ease, color 0.25s ease, filter 0.25s ease;
+}
+
+.checkbox:hover{
+    filter: brightness(90%);
+}
+
+.checkbox>input[type="checkbox"]{
+    display: none;
+}
+
+.checkbox:has(input:checked){
+    border: 2px solid var(--blue-green);
+    color: var(--doctor);
+    background-color: var(--blue-green);
+}

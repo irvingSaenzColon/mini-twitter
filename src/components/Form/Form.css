@@ -4,10 +4,11 @@
     padding: 8px 16px 24px;
     border-radius: var(--border-n);
     background-color: var(--doctor);
+    height: 650px;
 }
 
 .form--80{
-    height: 90vh;
+    max-height: 90vh;
 }
 
 .form--no-overflow{
