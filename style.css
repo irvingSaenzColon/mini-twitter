@@ -87,6 +87,10 @@ input[type=number] {
   color: var(--blue-green);
 }
 
+.title--darker{
+  color: var(--carbon);
+}
+
 .subtitle{
   margin-bottom: 16px;
   font-size: 2rem;
@@ -111,6 +115,10 @@ input[type=number] {
 
 .pd-nm{
   padding: 8px 16px;
+}
+
+.mr--md{
+  margin: 16px 0;
 }
 
 .mr-bt{
@@ -166,6 +174,10 @@ input[type=number] {
 
 .flex--align-start{
   align-items: start;
+}
+
+.block--center{
+  margin: 0 auto;
 }
 
 .inactive{

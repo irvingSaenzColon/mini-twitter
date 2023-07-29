@@ -1,7 +1,7 @@
 import { useId, useState } from "react";
 import './Input.css';
 
-export default function Input({value, onChangeInput, type, placeholder, message, error, maxLength = 0}){
+export default function Input({value, onChangeInput, type, name='',placeholder, message, error, maxLength = 0}){
     const inputId = useId();
     const [filled, setFilled] = useState(false);
     
@@ -23,8 +23,8 @@ export default function Input({value, onChangeInput, type, placeholder, message,
                 id={inputId}
                 value={value || ''}
                 type={type || ''}
-                name={placeholder}
-                onChange={(event) => onChangeInput(event.target.value, maxLength, placeholder)}
+                name={name}
+                onChange={(event) => onChangeInput(event.target.value, name, maxLength)}
                 onBlur={onBlur} />
         </label>
         {

@@ -14,7 +14,7 @@ import './Landing.css';
 export default function Landing() {
     const [animation, setAnimation] = useState('');
     const [hideAnimation, setHideAnimation] = useState('');
-    const { counter, increaseCounter, decreaseCounter } = useCounter(0);
+    const { counter, increaseCounter, decreaseCounter, resetCounter } = useCounter(0);
     const { saveSession } = useSession();
     const [mode, setMode] = useState(true);
     const initialValue = {
@@ -22,7 +22,7 @@ export default function Landing() {
         nickname: '',
         birthdate: '',
         email: '',
-        phone: '',
+        telephone: '',
         password: '',
         confirmPassword: ''
     }
@@ -64,15 +64,14 @@ export default function Landing() {
         }, 500);
     }, [hideAnimation]);
 
-    useEffect(()=> {
-        console.dir(userData);
-    }, [userData])
-
     const onCloseModal = (event) => {
-
+        setUserData(initialValue);
+        setModalMode(false);
+        setSignUpModal(false);
+        resetCounter();
     }
 
-    const onInputChange = (value, name, maxLength)=>{        
+    const onInputChange = (value, name, maxLength)=>{
             if(maxLength === 0){
                 setUserData({...userData, [name]: value})
                 return;
@@ -121,12 +120,15 @@ export default function Landing() {
 
     const onSignIn = (event) => {
         event.preventDefault();
+        
 
     }
 
     const cleanModalData = () => {
      setUserData(initialValue);
      setPreferences([]);
+     if(profileImage)
+        setProfileImage(null);
     }
 
     const onPreviousPage = (event) => {
@@ -144,35 +146,33 @@ export default function Landing() {
     const onNextPage = (event) => {
         //First it should be validated current inputs of a form
         let valid = 0;
-        if (counter === 0) {
+
+        if(signUpModal && counter === 0){
             valid = validateValues([
-              {value: name, pattern: REGULAR_PATTERNS.TEXT_PATTERN, setError: setNameError},
-              signUpType ? 
-              {value: telephone, pattern: REGULAR_PATTERNS.NUMBER_PATTERN, setError: setTelephoneError}
-              : 
-              {value: email, pattern: REGULAR_PATTERNS.EMAIL_PATTERN, setError: setEmailError} 
-              ,
-              {value: birthdate, pattern: REGULAR_PATTERNS.DATE_PATTERN, setError: setBirthdateError},
-              
-            ]);
+                {value: userData.name, pattern: REGULAR_PATTERNS.TEXT_PATTERN, setError: setNameError},
+                signUpType ? 
+                {value: userData.telephone, pattern: REGULAR_PATTERNS.NUMBER_PATTERN, setError: setTelephoneError}
+                : 
+                {value: userData.email, pattern: REGULAR_PATTERNS.EMAIL_PATTERN, setError: setEmailError} 
+                ,
+                {value: userData.birthdate, pattern: REGULAR_PATTERNS.DATE_PATTERN, setError: setBirthdateError},
+                
+              ]);
         }
-        else if (counter === 1) {
+        else if (signUpModal && counter === 1) {
             valid = validateValues([
-                { value: nickname, pattern: REGULAR_PATTERNS.WORD_PATTERN, setError: setNicknameError },
-                { value: password, pattern: REGULAR_PATTERNS.PASSWORD_PATTERN, setError: setPasswordError }
+                { value: userData.nickname, pattern: REGULAR_PATTERNS.WORD_PATTERN, setError: setNicknameError },
+                { value: userData.password, pattern: REGULAR_PATTERNS.PASSWORD_PATTERN, setError: setPasswordError }
             ]);
         }
 
-        if (password !== confirmPassword && counter === 1) {
+        if (signUpModal && userData.password !== userData.confirmPassword && counter === 1) {
             valid++;
             setConfirmPasswordError(true)
         }
 
-        if (valid) return;
+        if (signUpModal && valid) return;
 
-        console.dir({
-            name, nickname, email, password, confirmPassword
-        });
         // Current page must hide with animation and set current page to next one
         setHideAnimation('step-form--hide-reverse');
         setMode(true);
@@ -213,26 +213,26 @@ export default function Landing() {
                                 <h2>Step {counter + 1} from {4}</h2>
                                 <h2 className='subtitle'>Create an account</h2>
                                 <StepForm active={counter === 0} showAnimation={animation} hideAnimation={hideAnimation}>
-                                    <Input value={userData.name} onChangeInput={onInputChange} type={'text'} placeholder={'name'} message={'Please, enter your name'} error={nameError} maxLength={50} />
+                                    <Input name='name' value={userData.name} onChangeInput={onInputChange} type={'text'} placeholder={'name'} message={'Please, enter your name'} error={nameError} maxLength={50} />
                                     {
                                         signUpType
                                             ?
-                                            <Input value={userData.phone} onChangeInput={onInputChange} type={'number'} placeholder={'telephone'} message={'Please, enter a valid telephone'} error={telephoneError} />
+                                            <Input name='telephone' value={userData.telephone} onChangeInput={onInputChange} type={'number'} placeholder={'telephone'} message={'Please, enter a valid telephone'} error={telephoneError} />
                                             :
-                                            <Input value={userData.email} onChangeInput={onInputChange} type={'email'} placeholder={'email'} message={"Enter a valid email"} error={emailError} />
+                                            <Input name='email' value={userData.email} onChangeInput={onInputChange} type={'email'} placeholder={'email'} message={"Enter a valid email"} error={emailError} />
 
                                     }
                                     <button className='button--block button-link button--right' onClick={(event) => setSignUpType(!signUpType)}> Use {signUpType ? 'email' : 'telephone'} </button>
                                     <h3 className='subtitle'>Birthdate</h3>
                                     <p className='info info--darker'>This information isn't gonna be public. Confirm you age even if your account if or enterprise purposes, pets or other stuff.</p>
-                                    <Input value={userData.birthdate} onChangeInput={onInputChange} type={'date'} placeholder={'Birthdate'} message={"Please enter your birthdate"} error={birthdateError} />
+                                    <Input name='birthdate' value={userData.birthdate} onChangeInput={onInputChange} type={'date'} placeholder={'birthdate'} message={"Please enter your birthdate"} error={birthdateError} />
                                 </StepForm>
                                 <StepForm active={counter === 1} showAnimation={animation} hideAnimation={hideAnimation}>
                                     <h3>Nickname</h3>
                                     <p className='info info--darker'>With a nickname users from all over the world can find you without knowing all your name</p>
-                                    <Input value={userData.nickname} onChangeInput={onInputChange} type={'text'} placeholder={'nickname'} message={"A nickname can have symbols without white spaces"} error={nicknameError} />
-                                    <Input value={userData.password} onChangeInput={onInputChange} type={'password'} placeholder={'password'} message={"A password must have an uppercase a lowercase a symbol and at least characters"} error={passwordError} />
-                                    <Input value={userData.confirmPassword} onChangeInput={onInputChange} type={'password'} placeholder={'confirm password'} message={'Please, confirm your password by re-enetring the password'} error={confirmPasswordError} />
+                                    <Input name='nickname' value={userData.nickname} onChangeInput={onInputChange} type={'text'} placeholder={'nickname'} message={"A nickname can have symbols without white spaces"} error={nicknameError} />
+                                    <Input name='password' value={userData.password} onChangeInput={onInputChange} type={'password'} placeholder={'password'} message={"A password must have an uppercase a lowercase a symbol and at least characters"} error={passwordError} />
+                                    <Input name='confirmPassword' value={userData.confirmPassword} onChangeInput={onInputChange} type={'password'} placeholder={'confirm password'} message={'Please, confirm your password by re-enetring the password'} error={confirmPasswordError} />
                                 </StepForm>
                                 <StepForm active={counter === 2} showAnimation={animation} hideAnimation={hideAnimation}>
                                     <ProfileImage placeholder={'Pick an Image for your profile'} image={profileImage} setImage={setProfileImage} />
@@ -265,17 +265,30 @@ export default function Landing() {
                         )
                         :
                         (
-                            <Form onSubmitEvent={onSignIn} styleClasses={['form--md', 'form--space', 'form--center', 'form--no-overflow']}>
+                            <Form onSubmitEvent={onSignIn} styleClasses={['form--md','form--paddlog', 'flex', 'flex--direction-v', 'flex--between', 'flex-center-s', 'form--center', 'form--no-overflow', 'form--80']}>
                                 <button className='button-close button--right' type='button' onClick={onCloseModal}>
                                     <CrossIcon width={15} height={15} strokeWidth={4} />
                                 </button>
-                                <h2>Login in Twitter</h2>
-                                <Input value={userData.nickname} onChangeInput={onInputChange} type={'text'} placeholder={'nickname'} message={"A nickname can have symbols without white spaces"} error={nicknameError} />
-                                <Input value={userData.password} onChangeInput={onInputChange} type={'password'} placeholder={'password'} message={"A password must have an uppercase a lowercase a symbol and at least characters"} error={passwordError} />
-                                <Button styleClasses={['button--primary', 'button--gap-sm', 'button--right']} type={'submit'}>
-                                    <SignUpIcon width={15} height={15} stroke={'var(--nyanza)'} strokeWidth={4} />
-                                    <span>Sign Up</span>
-                                </Button>
+                                <TwitterIcon />
+                                <StepForm active={counter === 0} showAnimation={animation} hideAnimation={hideAnimation}>
+                                    <section className='login__login-type block--center'>
+                                        <h2 className='title title--darker'>Login in Twitter</h2>
+                                        <p><span>o</span></p>
+                                        <Input name='nickname' value={userData.nickname} onChangeInput={onInputChange} type={'text'} placeholder={'nickname'} message={"A nickname can have symbols without white spaces"} error={nicknameError} />
+                                        <button className="button button--primary button--full-width mr--md" type='button' onClick={onNextPage}>Next</button>
+                                        <button className="button button--fourth button--full-width" type='button' onClick={onOpenSignUpModal}>Have you forgot your password?</button>
+                                    </section>
+                                    
+                                </StepForm>
+                                <StepForm active={counter === 1} showAnimation={animation} hideAnimation={hideAnimation}>
+                                    <h2 className='title title--darker'>Type in your password</h2>
+                                    <Input name='nickname' value={userData.nickname} onChangeInput={onInputChange} type={'text'} placeholder={'email'} message={"A nickname can have symbols without white spaces"} error={nicknameError} />
+                                    <Input name='password' value={userData.password} onChangeInput={onInputChange} type={'password'} placeholder={'password'} message={"A password must have an uppercase a lowercase a symbol and at least characters"} error={passwordError} />
+                                    <Button styleClasses={['button--primary', 'button--full-width', 'button--pd-bg', 'mr--md']} type={'submit'}>
+                                        Sign In
+                                    </Button>
+                                </StepForm>
+                                <span className='info info--darker'>Don't you have an account already? <button className='button-link'>Sign up</button></span>
                             </Form>
                         )
                 }
